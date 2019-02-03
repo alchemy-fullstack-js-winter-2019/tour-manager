@@ -11,13 +11,14 @@ describe('Tour Model', () => {
     return Tour
       .create({
         title: 'Circus 2019',
-        activities: ['Juggling', 'Twisting', 'Animal weirdness']
+        activities: ['Juggling', 'Twisting', 'Animal weirdness'],
+        stops: ['1', '2', '3']
       })
       .then(tour => expect(tour.toJSON()).toEqual({
         title: 'Circus 2019',
         activities: ['Juggling', 'Twisting', 'Animal weirdness'],
         launchDate: expect.any(Date),
-        stops: [],
+        stops: ['1', '2', '3'],
         _id: expect.any(mongoose.Types.ObjectId)
       }));
   });
