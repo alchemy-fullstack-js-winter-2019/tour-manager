@@ -23,7 +23,7 @@ describe('tours route', () => {
       })
       .then(tour => {
         return request(app)
-          .post(`/stops/${tour._id}`)
+          .post(`/tours/${tour._id}/stops`)
           .send({
             location: {
               city: 'Wilsonville',
