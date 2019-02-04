@@ -13,6 +13,23 @@ describe('tours route', () => {
 
   afterAll(() => mongoose.connection.close());
 
+  it('can post a tour', () => {
+    return request(app)
+      .post('/tours')
+      .send({
+        title: 'Circus 2019',
+        activities: ['Juggling', 'Twisting', 'Animal weirdness'],
+        stops: ['1', '2', '3']
+      })
+      .then(res => expect(res.body).toEqual({
+        title: 'Circus 2019',
+        activities: ['Juggling', 'Twisting', 'Animal weirdness'],
+        launchDate: expect.any(String),
+        stops: ['1', '2', '3'],
+        _id: expect.any(String)
+      }));
+  });
+
   it('can get a list of tours', () => {
     return request(app)
       .get('/tours')
